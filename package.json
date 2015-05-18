@@ -1,0 +1,19 @@
+{
+  "name": "simple_login",
+  "version": "1.0.0",
+  "description": "simple_login",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cachrisman/simple_login.git"
+  },
+  "author": "charlie chrisman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cachrisman/simple_login/issues"
+  },
+  "homepage": "https://github.com/cachrisman/simple_login"
+}
