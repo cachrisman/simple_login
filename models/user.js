@@ -7,36 +7,38 @@ var userSchema = new mongoose.Schema({
     passwordDigest: String
 });
 
-userSchema.statics.createSecure = function(params, cb) {
+// SIGN UP
+
+// createSecure take a email and password in params
+userSchema.statics.createSecure = function(email, password, cb) {
+    // saves the user email and hashes the password
     var that = this;
-    bcrypt.genSalt(function(err, salt) {
-        bcrypt.hash(params.password, salt, function(err, hash) {
-            console.log(hash);
-            that.create({
-                email: params.email,
-                passwordDigest: hash
-            }, cb);
-        });
+    this.findOne({
+        email: email
+    }, function(err, user) {
+        if (user) {
+            cb("User already registered");
+        } else {
+            bcrypt.genSalt(function(err, salt) {
+                bcrypt.hash(password, salt, function(err, hash) {
+                    that.create({
+                        email: email,
+                        passwordDigest: hash
+                    }, cb);
+                });
+            });
+        }
     });
 };
 
-userSchema.statics.encryptPassword = function(password) {
-    var hash = bcrypt.hashSync(password, salt);
-    return hash;
-};
-
-
+//SIGN IN
 userSchema.statics.authenticate = function(email, password, cb) {
-    this.find({
+    this.findOne({
             email: email
         },
         function(err, user) {
-            if (user === null) {
-                throw new Error("Username does not exist");
-            } else if (user.checkPassword(password)) {
-                cb(null, user);
-            }
-
+            if (user.checkPassword(password)) cb(null, user);
+            else cb("login failed\n");
         });
 };
 

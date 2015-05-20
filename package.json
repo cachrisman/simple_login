@@ -19,6 +19,11 @@
   "dependencies": {
     "bcrypt": "^0.8.3",
     "body-parser": "^1.12.4",
-    "express": "^4.12.4"
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.4",
+    "ejs": "^2.3.1",
+    "express": "^4.12.4",
+    "express-session": "^1.11.2",
+    "mongoose": "^4.0.3"
   }
 }

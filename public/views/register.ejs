@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>simple_login - Register page</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" src="/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/underscore/underscore.js"></script>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="/bootstrap-validator/dist/validator.js"></script>
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/client.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/profile">Profile</a></li>
+          </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <% if (error.length) { %>
+                <div class="col-xs-offset-1 col-xs-10">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span><%= error %>
+                    </div>
+                </div>
+            <% } %>
+            <div class="col-xs-offset-3 col-xs-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form method="post" action="/users">
+                            <div class="input-group">
+                                <label for="inputEmail" class="control-label">Email</label>
+                                <input type="email" class="form-control" placeholder="Email" name="user[email]" data-error="Invalid email address" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <label for="inputPassword" class="control-label">Password</label>
+                                <input type="password" data-minlength="6" class="form-control" placeholder="Password" name="user[password]" required>
+                                <span class="help-block">Minimum of 6 characters</span>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
